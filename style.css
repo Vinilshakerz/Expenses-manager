@@ -1,0 +1,21 @@
+h1 {
+  background: red;
+  border-bottom: 20px;
+  padding: 10px;
+}
+p {
+  font-style: italic;
+  font: arial;
+  font-size: 24px;
+  text-align: justify;
+  padding: 20px;
+  border: 2px solid red;
+  box-sizing:border-box;
+  width: 600px;
+  display: inline-block;
+}
+footer {
+  display: block;
+  padding: 10px;
+  border: 2px solid blue;
+}
