@@ -31,32 +31,29 @@ function chooseExpenses() {
   }
 }
 chooseExpenses();
-// let i = 0;
-// while (i < 2) {
-//   a = prompt("Введите обязательную статью расходов в этом месяце");
-//   b = prompt("Во сколько обойдется?");
-//   appData.expenses[a] = b;
-//   i++;
-// }
 
-// do {
-//   a = prompt("Введите обязательную статью расходов в этом месяце");
-//   b = prompt("Во сколько обойдется?");
-//   appData.expenses[a] = b;
-//   i++;
-// } while (i < 2);
 appData.moneyPerDay = (appData.budget / 30).toFixed();
 alert("Ежедневный доход = " + appData.moneyPerDay);
-switch(Number(appData.moneyPerDay)) {
-  case '<= 100' :
-    console.log("Низкий уроверь достатка");
-    break;
-  case '> 100' : 
-    console.log("Средний уровень достатка");
-    break;
-  case '> 2000' : 
-    console.log("Высокий уровень достатка");
-    break;
-  default : 
-    console.log("Ошибка ввода данных");
+if (appData.moneyPerDay <= 100) {
+  console.log("Низкий уроверь достатка");
 }
+else if (appData.moneyPerDay > 100 && appData.moneyPerDay < 2000) {
+  console.log("Средний уровень достатка");
+}
+else if (appData.moneyPerDay > 2000) {
+  console.log("Высокий уровень достатка");
+}
+else {
+  console.log("Ошибка ввода данных");
+}
+
+function checkSavings() {
+  if (appData.savings == true) {
+    let save = +prompt("Сумма вашего депозита?"),
+        percent = +prompt("Под какой процент?");
+    appData.monthIncome = save/100/12*percent;
+    alert("Ваш ежемесечный доход = " + appData.monthIncome);
+  }
+}
+
+checkSavings();
