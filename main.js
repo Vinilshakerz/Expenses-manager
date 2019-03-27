@@ -13,7 +13,7 @@ let appData = {
   expenses: {},
   optionalExpenses: {},
   income: {},
-  savings: false,
+  savings: true,
 };
 function chooseExpenses() {
   for ( let i = 0; i < 2; i++ ) {
@@ -32,20 +32,39 @@ function chooseExpenses() {
 }
 chooseExpenses();
 
-appData.moneyPerDay = (appData.budget / 30).toFixed();
-alert("Ежедневный доход = " + appData.moneyPerDay);
-if (appData.moneyPerDay <= 100) {
-  console.log("Низкий уроверь достатка");
+function chooseOptExpenses() {
+  for (let i = 1; i < 4; i++) {
+    let a = prompt("Статья необязательных расходов?");
+    // console
+    appData.optionalExpenses[i] = a;
+    console.log("done");
+  }    
 }
-else if (appData.moneyPerDay > 100 && appData.moneyPerDay < 2000) {
-  console.log("Средний уровень достатка");
+
+chooseOptExpenses();
+
+function detectDayBudget() {
+  appData.moneyPerDay = (appData.budget / 30).toFixed();
+  alert("Ежедневный доход = " + appData.moneyPerDay);
 }
-else if (appData.moneyPerDay > 2000) {
-  console.log("Высокий уровень достатка");
+detectDayBudget();
+
+function detectLevel() {
+  if (appData.moneyPerDay <= 100) {
+    console.log("Низкий уроверь достатка");
+  }
+  else if (appData.moneyPerDay > 100 && appData.moneyPerDay < 2000) {
+    console.log("Средний уровень достатка");
+  }
+  else if (appData.moneyPerDay > 2000) {
+    console.log("Высокий уровень достатка");
+  }
+  else {
+    console.log("Ошибка ввода данных");
+  }
 }
-else {
-  console.log("Ошибка ввода данных");
-}
+
+detectLevel();
 
 function checkSavings() {
   if (appData.savings == true) {
